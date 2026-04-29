@@ -32,89 +32,48 @@ module "awesome-vpc" {
 }
 ```
 
+<!-- BEGIN_TF_DOCS -->
+## Requirements
+
+| Name | Version |
+|------|---------|
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | 5.11.0 |
+
+## Providers
+
+| Name | Version |
+|------|---------|
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 5.11.0 |
+
+## Modules
+
+No modules.
+
+## Resources
+
+| Name | Type |
+|------|------|
+| [aws_vpc.module_vpc](https://registry.terraform.io/providers/hashicorp/aws/5.11.0/docs/resources/vpc) | resource |
+
 ## Inputs
-<table>
-<tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Type</th>
-    <th>Default </th>
-    <th>Required</th>
-    <th>Example</th>
-</tr>
-<tr>
-<td>vpc_cidr</td>
-<td>The IPv4 CIDR block for the VPC</td>
-<td>string</td>
-<td>No</td>
-<td>Yes</td>
-<td>10.0.0.0/16</td>
-</tr>
-<tr>
-<td>vpc_tags</td>
-<td>A map of tags to assign to the resource.</td>
-<td>map</td>
-<td>
-No
-</td>
-<td>Yes</td>
-<td>
 
-```json
-{
-    "Name": "Awesome",
-    "Environment": "dev"
-}
-```
-</td>
-</tr>
-<tr>
-<td>enable_dns_hostnames</td>
-<td> A boolean flag to enable/disable DNS hostnames in the VPC.</td>
-<td>bool</td>
-<td>false</td>
-<td>No</td>
-<td>false</td>
-</tr>
-<tr>
-<td>enable_dns_support</td>
-<td> A boolean flag to enable/disable DNS support in the VPC.</td>
-<td>bool</td>
-<td>true</td>
-<td>No</td>
-<td>true</td>
-</tr>
-
-</table>
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_enable_dns_hostnames"></a> [enable\_dns\_hostnames](#input\_enable\_dns\_hostnames) | A boolean flag to enable/disable DNS hostnames in the VPC. Default false | `bool` | `false` | no |
+| <a name="input_enable_dns_support"></a> [enable\_dns\_support](#input\_enable\_dns\_support) | A boolean flag to enable/disable DNS support in the VPC. Defaults to true. | `bool` | `true` | no |
+| <a name="input_vpc_cidr"></a> [vpc\_cidr](#input\_vpc\_cidr) | vpc cidr | `string` | n/a | yes |
+| <a name="input_vpc_tags"></a> [vpc\_tags](#input\_vpc\_tags) | A map of tags for vpc resource. | <pre>object({<br>    Name        = string,<br>    Environment = string<br>  })</pre> | n/a | yes |
 
 ## Outputs
 
-<table>
-<tr>
-    <th>Name</th>
-    <th>Description</th>
-</tr>
-<tr>
-<td>vpc_id</td>
-<td>The ID of the VPC.</td>
-</tr>
-<tr>
-<td>vpc_cidr_block</td>
-<td>The IPv4 CIDR block for the VPC.</td>
-</tr>
-<tr>
-<td>vpc_tags</td>
-<td>A map of tags to assign to the resource.</td>
-</tr>
-<tr>
-<td>enable_dns_hostnames</td>
-<td> A boolean flag to enable/disable DNS hostnames in the VPC.</td>
-</tr>
-<tr>
-<td>enable_dns_support</td>
-<td> A boolean flag to enable/disable DNS support in the VPC.</td>
-</tr>
-</table>
+| Name | Description |
+|------|-------------|
+| <a name="output_enable_dns_hostnames"></a> [enable\_dns\_hostnames](#output\_enable\_dns\_hostnames) | A boolean flag to enable/disable DNS hostnames in the VPC. Default false |
+| <a name="output_enable_dns_support"></a> [enable\_dns\_support](#output\_enable\_dns\_support) | A boolean flag to enable/disable DNS support in the VPC. Defaults to true. |
+| <a name="output_vpc_cidr_block"></a> [vpc\_cidr\_block](#output\_vpc\_cidr\_block) | The IPv4 CIDR block for the VPC. |
+| <a name="output_vpc_id"></a> [vpc\_id](#output\_vpc\_id) | The ID of the VPC. |
+| <a name="output_vpc_tags"></a> [vpc\_tags](#output\_vpc\_tags) | A map of tags for vpc resource. |
+<!-- END_TF_DOCS -->
 
 ## Tests
 
