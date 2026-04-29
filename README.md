@@ -1,42 +1,9 @@
-# TF-AWS-VPC
-Module to crete a custom AWS VPC
-
-## Architecture
-
-Diagram showing the resources created and their relationships.
-
-       AWS
-        |
-       VPC
-
-## Requirements
-
-- Terraform version: v1.14.8
-- Golang version: v1.26.0
-- Provider versions:
-    - hashicorp/aws: 5.11.0
-- [Localstack](https://www.localstack.cloud/)
-- Docker: v29.4.0
-
-## Usage
-```hcl
-module "awesome-vpc" {
-    source = "./"
-    vpc_cidr           = "10.0.0.0/16"
-    vpc_tags                 = {
-        "Name": "Awesome",
-        "Environment": "dev"
-    }
-    enable_dns_hostnames = true
-    enable_dns_support   = false
-}
-```
-
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
 | Name | Version |
 |------|---------|
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | ~> 1.5 |
 | <a name="requirement_aws"></a> [aws](#requirement\_aws) | 5.11.0 |
 
 ## Providers
@@ -74,20 +41,3 @@ No modules.
 | <a name="output_vpc_id"></a> [vpc\_id](#output\_vpc\_id) | The ID of the VPC. |
 | <a name="output_vpc_tags"></a> [vpc\_tags](#output\_vpc\_tags) | A map of tags for vpc resource. |
 <!-- END_TF_DOCS -->
-
-## Tests
-
-Go initialization (In case test package is not initialized)
-
-```bash
-cd test
-go mod init tf_aws_vpc_test
-go mod edit -require github.com/gruntwork-io/terratest@v0.51.0
-go mod tidy
-```
-## Notes / Known Issues
-
-TBD
-
-## License
-MIT
