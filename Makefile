@@ -1,6 +1,8 @@
 .PHONY: fmt-check validate tflint docs-check static-check terratest test
 
-EXAMPLE_DIRS := examples/complete examples/not_valid_cidr examples/not_valid_tags
+# Only validate examples that are expected to produce valid configurations.
+# examples/not_valid_* are intentionally invalid and exercised exclusively by Terratest.
+VALIDATE_DIRS := examples/complete
 
 fmt-check:
 	@echo "==> Running terraform fmt check..."
@@ -10,7 +12,7 @@ validate:
 	@echo "==> Validating root module..."
 	terraform init -backend=false
 	terraform validate
-	@for dir in $(EXAMPLE_DIRS); do \
+	@for dir in $(VALIDATE_DIRS); do \
 		echo "==> Validating $$dir..."; \
 		(cd $$dir && terraform init -backend=false && terraform validate); \
 	done
